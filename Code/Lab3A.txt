@@ -1,0 +1,35 @@
+﻿Word selected:
+
+- Trifolium Repens (white clover)
+- Crepis Sancta
+- Culex Pipiens (Common house mosquito)
+- Biston Betularia (Peppered moth)
+
+The word selected for the e­xperiment are Latin names . The first twos belong to the kingdom of plants, and the other ones to the kingdom of animals.
+For every utterance, I did three different tries to have few results since sometimes there might be interferences or mispronunciation of the terms the first times.
+
+Trifolium Repens:
+{utterance: 'Trifolium weapons', confidence: 0.14944944}
+{utterance: 'Three volume reference', confidence: 0.07917811}
+{utterance: 'Trifolium ripens', confidence: 0.29867023}
+
+Crepis Sancta:
+{utterance: 'Crepes Sancta', confidence: 0.08957642}
+{utterance: 'Crepes Sancta', confidence: 0.13700683}
+{utterance: 'Crepes Sancta', confidence: 0.34275365}
+
+Culex Pipiens:
+{utterance: 'Kulex PPNS', confidence: 0.09402655}
+{utterance: 'Kulex bepans', confidence: 0.06605952}
+{utterance: 'Kulex Pipians', confidence: 0.07971359}
+
+Biston Betularia:
+{utterance: 'Beeston, Petularia', confidence: 0.15462315}
+{utterance: 'Beeston, Betularia', confidence: 0.13095933}
+{utterance: 'Beeston, Betularia', confidence: 0.15577406}
+
+As we can see, none of the results brought the complete correct translation from all the tries. There are different reasons that we might assume form this experiment; we can focus to the general problem during speech recognition with Latin words and to the specific word used.
+Firstly, Latin language influenced many languages in the European continent, and not only; today is even used to describe and express words from different languages, and sometimes this brings the Latin words to be pronounced in different ways due to to the accent of the origin of the person, even if we want to describe the same word; because of this, automatic speech recognition tasks can struggle to understand these words, the dialect and accent influence a lot the way of how they are pronounced. 
+Another aspect might be the rarity of the terms. Since these models are trained with data that tends to come from a biased representation of the world, they may suffer to learn from rare terms if the model is not specific of a topic, going be more efficient with the most generic ones.
+Looking to the specif terms experimented, we can see how 'Trifolium', 'Sancta', and 'Betularia' are the only ones recognized almost always. Since my native language is Italian, I feel to say that the sound of these words was already a bit in my mind unconsciously, so I would say that they are more common in the general vocabulary, both for sound and frequency in the language.
+I want to add that, this last declaration might be biased, since I had this thought after have seen the results and not before.
