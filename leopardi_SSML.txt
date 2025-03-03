@@ -1,0 +1,26 @@
+Reference: 
+
+https://www.youtube.com/watch?v=C4Je7YiOEo0
+
+The file contains already the different edits for the VG Part.
+
+Code:
+
+<!--ID=B7267351-473F-409D-9765-754A8EBCDE05;Version=1|{"VoiceNameToIdMapItems":[{"Id":"508301c1-b9e8-4160-bb67-9cc3828385bc","Name":"Microsoft Server Speech Text to Speech Voice (it-IT, MarcelloMultilingualNeural)","ShortName":"it-IT-MarcelloMultilingualNeural","Locale":"it-IT","VoiceType":"StandardVoice"}]}-->
+<!--ID=FCB40C2B-1F9F-4C26-B1A1-CF8E67BE07D1;Version=1|{"Files":{}}-->
+<!--ID=5B95B1CC-2C7B-494F-B746-CF22A0E779B7;Version=1|{"Locales":{"de-DE":{"AutoApplyCustomLexiconFiles":[{}]},"it-IT":{"AutoApplyCustomLexiconFiles":[{}]},"en-US":{"AutoApplyCustomLexiconFiles":[{}]}}}-->
+<speak xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="http://www.w3.org/2001/mstts" xmlns:emo="http://www.w3.org/2009/10/emotionml" version="1.0" xml:lang="it-IT"><voice name="it-IT-MarcelloMultilingualNeural"><lang xml:lang="it-IT"><prosody contour="(0%, -64%) (100%, -64%)">Sempre caro mi fu</prosody><break strength="medium" />  <prosody contour="(0%, -67%) (100%, -64%)">quest’ermo colle,</prosody>
+<prosody rate="+5.00%" contour="(1%, -73%) (100%, -71%)">e questa siepe</prosody>, <prosody contour="(0%, -77%) (99%, -76%)">che da tanta </prosody><prosody rate="+10.00%" contour="(0%, -68%) (99%, -71%)">parte</prosody></lang></voice>
+<voice name="it-IT-MarcelloMultilingualNeural" tailingsilence="2s"><lang xml:lang="it-IT"><prosody rate="+10.00%" contour="(0%, -79%) (99%, -79%)">dell’ultimo</prosody><prosody contour="(0%, -69%) (100%, -71%)"> orizzonte</prosody><break strength="medium" /> <prosody contour="(0%, -71%) (100%, -68%)">il guardo esclude. </prosody></lang></voice>
+<voice name="it-IT-MarcelloMultilingualNeural"><lang xml:lang="it-IT"><prosody rate="+10.00%" contour="(0%, -76%) (100%, -77%)">Ma sedendo e mirando</prosody><prosody contour="(0%, -76%) (100%, -77%)">,</prosody><break strength="medium" /> <prosody contour="(0%, -69%) (100%, -63%)">interminati </prosody>
+<prosody contour="(0%, -72%) (100%, -71%)">spazi </prosody><prosody rate="+10.00%" contour="(1%, -73%) (100%, -72%)">di là da</prosody><prosody contour="(0%, -68%) (99%, -67%)"> quella, e sovrumani</prosody>
+<prosody contour="(1%, -73%) (100%, -67%)">silenzi</prosody>,<break strength="x-weak" /> <prosody contour="(1%, -72%) (99%, -69%)">e profondissima quïete  </prosody>
+<prosody contour="(0%, -79%) (99%, -75%)">io nel pensier mi fingo;</prosody><prosody rate="+5.00%" contour="(0%, -71%) (100%, -68%)"> ove per poco</prosody>
+<prosody rate="-5.00%" contour="(0%, -69%) (99%, -65%)">il cor non si spaura.</prosody><break strength="strong" /> <prosody rate="+5.00%" contour="(0%, -71%) (100%, -69%)">E come il vento</prosody>
+<prosody contour="(1%, -77%) (99%, -76%)">odo stormir tra queste piante, io quello</prosody>
+<prosody contour="(0%, -73%) (100%, -65%)">infinito silenzio a questa voce </prosody>
+<prosody contour="(1%, -71%) (100%, -69%)">vo comparando:</prosody><prosody rate="-10.00%" contour="(1%, -75%) (99%, -71%)"> e mi sovvien l’eterno,</prosody><break strength="x-weak" /><prosody rate="-10.00%" contour="(1%, -75%) (99%, -71%)"></prosody>
+<prosody rate="-10.00%" contour="(1%, -69%) (100%, -68%)">e le morte stagioni, e la presente</prosody>
+<prosody rate="-10.00%" contour="(1%, -75%) (100%, -75%)">tra queste piante e viva, el suon di lei.</prosody><break strength="strong" /> <prosody contour="(0%, -71%) (99%, -68%)">Così tra questa </prosody></lang></voice>
+<voice name="it-IT-MarcelloMultilingualNeural" tailingsilence="2s"><lang xml:lang="it-IT"><prosody rate="-10.00%" contour="(1%, -76%) (99%, -69%)">immensità</prosody><prosody rate="-10.00%" contour="(1%, -75%) (99%, -73%)"> s’annega il pensier mio:</prosody></lang></voice>
+<voice name="it-IT-MarcelloMultilingualNeural"><lang xml:lang="it-IT"><prosody rate="-5.00%" volume="-20.00%" contour="(0%, -77%) (100%, -71%)">e 'l naufragar m’è dolce in questo mare.</prosody></lang></voice></speak>
