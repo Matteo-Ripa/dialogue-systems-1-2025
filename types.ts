@@ -11,6 +11,6 @@ export interface DMContext {
   
   // New properties for NLU integration
   appointment: boolean | null;   // Stores the recognized intent from Azure NLU
-  celebrity: string | null; // Stores the celebrity name for "who is X" intent
+  celebrity: string | null | boolean; // Stores the celebrity name for "who is X" intent
 }
 export type DMEvents = SpeechStateExternalEvent | { type: "CLICK" };

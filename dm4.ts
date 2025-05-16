@@ -70,6 +70,10 @@ function getConfirm(utterance: string) {
   return (grammar[utterance.toLowerCase()] || {}).yesno;
 }
 
+function isInGrammar(utterance : string) {
+return utterance.toLowerCase() in grammar;
+  //this gives back the nickname, key returns a boolean
+}
 
 
 
@@ -156,11 +160,24 @@ const dmMachine = setup({
           actions: assign({ appointment:true }) 
           },
           {
-          guard: ({event}) => event.nluValue.topIntent === "Who is X",
-          actions: assign(({ event }) => {
-            return { celebrity: getCelebrityInfo(event.nluValue.entities[0])};
-          }),
+            guard: ({event}) => event.nluValue.topIntent === "Who is X" && isInGrammar(event.nluValue.entities[0].text),
+            actions: assign(({ event }) => {
+                  return { celebrity: getCelebrityInfo(event.nluValue.entities[0].text)};
+                }),
           }],
+          // {guard: ({event}) => event.nluValue.topIntent === "Who is X" && isInGrammar(event.nluValue.entities[0].text),
+          //   actions: assign({celebrity: ({event}) => event.nluValue.entities[0].text}),
+          //   //target: "CelebrityInfo",
+          // }
+          // {guard: ({event}) => event.nluValue.topIntent === "Who is X", 
+          // target: "DontKnowthisperson",
+          // actions: assign({celebrity: ({event}) => event.nluValue.entities[0].text}),
+          // },
+          //actions: assign({celebrity: ({event}) => event.nluValue.entities[0].text})
+          //actions: assign(({ event }) => {
+           //  return { celebrity: getCelebrityInfo(event.nluValue.entities[0])};
+         // }),
+
 
           LISTEN_COMPLETE: [
             {
@@ -169,15 +186,17 @@ const dmMachine = setup({
             }, 
             {
               guard: ({ context }) => context.celebrity !=null,
+              //actions:  assign({celebrity: ({event}) => event.nluValue.entities[0].text}),
+              actions : () => console.log('It worked'),
               target: "CelebrityInfo",
             },
             {
               target: "DontUnderstand"
             }
           ],
-          ASR_NOINPUT: {
-            actions: assign({ celebrity: null }),
-          },
+          // ASR_NOINPUT: {
+          //   actions: assign({ celebrity: null }),
+          //},
         }
       },
 
@@ -193,18 +212,40 @@ const dmMachine = setup({
         },
       },
 
-      // State for providing celebrity information
       CelebrityInfo: {
+        //   entry: {
+        //     type: "spst.speak",
+        //     params: ({context}) => `${getCelebrityInfo}`
+        //    //params: ({ context }) => ({ 
+        //     //utterance: `${context}` 
+        //    //}),
+        // },
+        //   on: { SPEAK_COMPLETE: "Prepare" },
+        //   },
+      
+      // State for providing celebrity information
+      // CelebrityInfo: {
         entry: {
-            type: "spst.speak",
-            params: ({ context }) => ({ 
-            utterance: `${context.celebrity}` 
-            }),
-        },
-        on: {
-            SPEAK_COMPLETE: "Prepare",
-        },
+          type: "spst.speak",
+          params: ({ context }) => ({utterance: `${context.celebrity}`, })
+          },
+          on: {
+              SPEAK_COMPLETE: "Prepare",
+          },
       },
+
+
+      //   entry: {
+      //       type: "spst.speak",
+      //       params: ({ context }) => 
+      //         ({ 
+      //       utterance: `${context.celebrity}` 
+      //       }),
+      //   },
+      //   on: {
+      //       SPEAK_COMPLETE: "Prepare",
+      //   },
+      // },
 
       // Appointment flow states
       AskPerson: {
@@ -218,26 +259,31 @@ const dmMachine = setup({
       },
 
       ListenPerson: {
-        entry: { type: "spst.listen" },
-          on: {
-            RECOGNISED:{
-              actions:
-              assign({person: ({event}) => event.nluValue.entities[0]
-              }),
-            },
-            LISTEN_COMPLETE: [
-              {
-              guard: ({ context }) => context.day!=null,
-              target: "AskDay",
+              entry: [{
+                type: "spst.listen"
+              }],
+              on: {
+                // ASR_NOINPUT : "Canthear2",
+                RECOGNISED: {
+                  actions: 
+                  assign({person: ({event}) => event.nluValue.entities[0].text
+                  }),
+                target: "ListenComplete",
               },
-              {
-                target: "AskPerson"}
-            ],
-            ASR_NOINPUT: {
-              actions: assign({ day: null }),
+                //ASR_NOINPUT : "Canthear",
+              },
+            },
+
+
+      ListenComplete: {
+          on: {
+            LISTEN_COMPLETE: {
+              target: "AskDay",
+              actions: () => console.log("Listen complete"),
             },
           },
-      },
+        },
+
 
       AskDay: {
         entry: {
@@ -352,25 +398,50 @@ const dmMachine = setup({
       },
 
       ListenTime: {
-        entry: { type: "spst.listen" },
+            entry: [{
+              type: "spst.listen"
+            }],
             on: {
+              //ASR_NOINPUT : "Canthear2",
               RECOGNISED: {
-                actions:
+                actions: 
                 assign({time: ({event}) => event.nluValue.entities[0].text
                 }),
+              target: "CompleteTime",
             },
-            LISTEN_COMPLETE: [
-              {
-              guard: ({ context }) => context.time!=null,
-              target: "ConfirmAppointment",
-              },
-              {target: "AskTime"}
-            ],
-            ASR_NOINPUT: {
-              actions: assign({ time: null }),
+              //ASR_NOINPUT : "Canthear",
             },
           },
-      }, 
+
+        CompleteTime : {
+        on: {
+          LISTEN_COMPLETE: {
+            target: "ConfirmAppointment",
+            actions: () => console.log("Listen complete"),
+          },
+        },
+        },
+
+      // ListenTime: {
+      //   entry: { type: "spst.listen" },
+      //       on: {
+      //         RECOGNISED: {
+      //           actions:
+      //           assign({time: ({event}) => event.nluValue.entities[0].text
+      //           }),
+      //       },
+      //       LISTEN_COMPLETE: [
+      //         {
+      //         guard: ({ context }) => context.time!=null,
+      //         target: "ConfirmAppointment",
+      //         },
+      //         {target: "AskTime"}
+      //       ],
+      //       ASR_NOINPUT: {
+      //         actions: assign({ time: null }),
+      //       },
+      //     },
+      // }, 
 
       ConfirmAppointment: {
         entry: {
